@@ -25,7 +25,7 @@ const PlaceItem = props =>{
     const confirmDeleteHandler = async () =>{
         setShowConfirmModal(false);
         try {
-            await sendRequest(process.env.REACT_APP_BACKEND_URL + `/api/places/${props.id}`,'DELETE',null,
+            await sendRequest(process.env.REACT_APP_BACKEND_URL + `/places/${props.id}`,'DELETE',null,
                  { 
                     Authorization : "Bearer " + auth.token
                  }
