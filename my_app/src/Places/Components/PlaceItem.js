@@ -12,6 +12,7 @@ import ErrorModal from "../../Shared/Components/UIElements/ErrorModal";
 const PlaceItem = props =>{
     const [showMap,setShowMap]= useState(false);
     const [showConfirmModal,setShowConfirmModal] = useState(false);
+    const auth = useContext(AuthContext);
     const {isLoading, error , sendRequest , clearError} = useHttpClient()
     const openMapHandler = ()=>{setShowMap(true)};
     const closeMapHandler = () => {setShowMap(false)};
@@ -24,7 +25,7 @@ const PlaceItem = props =>{
     const confirmDeleteHandler = async () =>{
         setShowConfirmModal(false);
         try {
-            await sendRequest(process.env.REACT_APP_BACKEND_URL + `/places/${props.id}`,'DELETE',null,
+            await sendRequest(process.env.REACT_APP_BACKEND_URL + `/api/places/${props.id}`,'DELETE',null,
                  { 
                     Authorization : "Bearer " + auth.token
                  }
@@ -35,7 +36,7 @@ const PlaceItem = props =>{
         }
         
     }
-    const auth = useContext(AuthContext);
+   
     return (
         <React.Fragment>
         <ErrorModal error = {error} onClear = {clearError}/>
