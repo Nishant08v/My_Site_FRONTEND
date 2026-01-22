@@ -48,7 +48,7 @@ const placeSubmitHandler = async (event)=>{
         formData.append("image",formState.inputs.image.value);
 
         
-        await sendRequest(process.env.REACT_APP_BACKEND_URL + '/places','POST',formData,{
+        await sendRequest(process.env.REACT_APP_BACKEND_URL + '/api/places','POST',formData,{
             Authorization : 'Bearer ' + auth.token
         });
     history.push('/');
